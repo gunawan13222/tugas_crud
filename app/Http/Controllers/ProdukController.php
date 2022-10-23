@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\produk;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ProdukController extends Controller
 {
@@ -42,6 +43,10 @@ class ProdukController extends Controller
         $validated =$request->validate([
             'judul'=>'required'
         ]);
+        $produk = new produk();
+        $produk->judul=$request->judul;
+        $produk->save();
+        return redirect()->route('produk.index')->with('success', 'Data berhasil di buat!');
         
     }
 
@@ -51,9 +56,11 @@ class ProdukController extends Controller
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function show(produk $produk)
+    public function show($id)
     {
-        //
+        // menampilkan produk 
+        $produk = produk::findOrFail($id);
+        return view('produk.show', compact('produk'));
     }
 
     /**
@@ -62,9 +69,10 @@ class ProdukController extends Controller
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function edit(produk $produk)
+    public function edit($id)
     {
-        //
+        $produk = produk::findOrFail($id);
+        return view('produk.edit', compact('produk'));
     }
 
     /**
@@ -74,9 +82,16 @@ class ProdukController extends Controller
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, produk $produk)
+    public function update(Request $request, $id)
     {
-        //
+        $validated =$request->validate([
+            'judul'=>'required'
+        ]);
+        $produk = produk::findOrFail($id);
+        $produk->judul=$request->judul;
+        $produk->save();
+        return redirect()->route('produk.index')->with('success', 'Data berhasil edit !');
+        
     }
 
     /**
@@ -85,8 +100,10 @@ class ProdukController extends Controller
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(produk $produk)
+    public function destroy($id)
     {
-        //
+        $produk = produk::findOrFail($id);
+        $produk->delete();
+        return redirect()->route('produk.index')->with('success', 'Data berhasil di hapus !');
     }
 }

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class produk extends Model
 {
+    public $fillable =['judul'];
+    public $timestamps = true;
     use HasFactory;
 }
