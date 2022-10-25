@@ -17,7 +17,9 @@ class ProdukController extends Controller
     {
         // menambahkan halaman utama 
         $produk = produk::all();
-        return view('produk.index', compact('produk'));
+        return view('produk.index', compact('produk'),[
+            'title'=>'produk'
+        ]);
     }
 
     /**
@@ -28,7 +30,8 @@ class ProdukController extends Controller
     public function create()
     {
         // menampilkan from produk
-        return view ('produk.create');
+        return view ('produk.create',[
+            'title'=>'produk']);
     }
 
     /**
@@ -46,7 +49,8 @@ class ProdukController extends Controller
         $produk = new produk();
         $produk->judul=$request->judul;
         $produk->save();
-        return redirect()->route('produk.index')->with('success', 'Data berhasil di buat!');
+        return redirect()->route('produk.index',[
+            'title'=>'produk'])->with('success', 'Data berhasil di buat!');
         
     }
 
@@ -60,7 +64,8 @@ class ProdukController extends Controller
     {
         // menampilkan produk 
         $produk = produk::findOrFail($id);
-        return view('produk.show', compact('produk'));
+        return view('produk.show',[
+            'title'=>'produk'], compact('produk'));
     }
 
     /**
@@ -72,7 +77,8 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $produk = produk::findOrFail($id);
-        return view('produk.edit', compact('produk'));
+        return view('produk.edit',[
+            'title'=>'produk'], compact('produk'));
     }
 
     /**
@@ -90,7 +96,8 @@ class ProdukController extends Controller
         $produk = produk::findOrFail($id);
         $produk->judul=$request->judul;
         $produk->save();
-        return redirect()->route('produk.index')->with('success', 'Data berhasil edit !');
+        return redirect()->route('produk.index',[
+            'title'=>'produk'])->with('success', 'Data berhasil edit !');
         
     }
 
@@ -104,6 +111,7 @@ class ProdukController extends Controller
     {
         $produk = produk::findOrFail($id);
         $produk->delete();
-        return redirect()->route('produk.index')->with('success', 'Data berhasil di hapus !');
+        return redirect()->route('produk.index',[
+            'title'=>'produk'])->with('danger', 'Data berhasil di hapus !');
     }
 }

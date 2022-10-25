@@ -1,11 +1,10 @@
 @extends('layout.master')
 @section('konten')
-<h1>Data produk</h1>
 @include('layout.pesan')
-<table border="1">
+<table border="1" class="table table-striped">
   <thead>
     <tr>
-      <th>no</th>
+      <th style="width: 5%" >no</th>
       <th>produk</th>
       <th><a href="{{ route('produk.create') }}">Tambah data</a></th>
     </tr>
@@ -21,7 +20,7 @@
          @csrf
         @method('delete')
         <a href="{{ route('produk.edit', $data->id) }}">edit</a>
-        <button type="submit" onclick="return comfirm('apakah anda yakin ?')">Delete</button>
+        <button class="btn btn-danger btn-sm"  type="submit" onclick="return comfirm('apakah anda yakin ?')">Delete</button>
       </form>
       </td>
     </tr>
