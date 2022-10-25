@@ -24,8 +24,7 @@
           </button>
           <div
             class="collapse navbar-collapse justify-content-center"
-            id="navbarCenteredExample"
-          >
+            id="navbarCenteredExample">
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link {{ ($title === "produk") ? 'active' : '' }}" aria-current="page" href="/produk">PRODUK</a>

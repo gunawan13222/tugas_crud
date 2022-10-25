@@ -10,4 +10,4 @@ judul  <input type="text" name="judul">
 <button class="btn btn-primary" type="submit">Save</button>
 </form>
     <a href="{{ route('produk.index') }}" type="submit">kembali</a>
-@endsection
+@endsection 

@@ -9,7 +9,7 @@ judul : <input type="text" name="judul" value="{{ $produk->judul }}">
 @error('judul')
 <strong>{{ $message }}</strong>
 @enderror
-<button type="submit">update</button>
+<button  class="btn btn-primary" type="submit" >update</button>
 </form>
 <a href="{{ route('produk.index') }}" type="submit">kembali</a>
 @endsection
