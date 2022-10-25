@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\produk;
+use App\Models\kategori;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class ProdukController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,9 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        // menambahkan halaman utama 
-        $produk = produk::all();
-        return view('produk.index', compact('produk'),[
-            'title'=>'produk'
+        $kategori = kategori::all();
+        return view('kategori.index', compact('kategori'),[
+            'title'=>'kategori'
         ]);
     }
 
@@ -29,9 +27,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        // menampilkan from produk
-        return view ('produk.create',[
-            'title'=>'produk']);
+        return view ('kategori.create',[
+            'title'=>'kategori']);
     }
 
     /**
@@ -42,8 +39,7 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        // menyimpan di table produks
-        $validated =$request->validate([
+         $validated =$request->validate([
             'nama'=>'required',
             'deskripsi'=>'required',
             'harga'=>'required',
@@ -62,19 +58,17 @@ class ProdukController extends Controller
         $produk->save();
         return redirect()->route('produk.index',[
             'title'=>'produk'])->with('success', 'Data berhasil di buat!');
-        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\produk  $produk
+     * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(kategori $id)
     {
-        // menampilkan produk 
-        $produk = produk::findOrFail($id);
+         $produk = produk::findOrFail($id);
         return view('produk.show',[
             'title'=>'produk'], compact('produk'));
     }
@@ -82,12 +76,12 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\produk  $produk
+     * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(kategori $id)
     {
-        $produk = produk::findOrFail($id);
+         $produk = produk::findOrFail($id);
         return view('produk.edit',[
             'title'=>'produk'], compact('produk'));
     }
@@ -96,12 +90,12 @@ class ProdukController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\produk  $produk
+     * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, kategori $id)
     {
-        $validated =$request->validate([
+         $validated =$request->validate([
             'nama'=>'required',
             'deskripsi'=>'required',
             'harga'=>'required',
@@ -115,16 +109,15 @@ class ProdukController extends Controller
         $produk->save();
         return redirect()->route('produk.index',[
             'title'=>'produk'])->with('success', 'Data berhasil edit !');
-        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\produk  $produk
+     * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(kategori $id)
     {
         $produk = produk::findOrFail($id);
         $produk->delete();
