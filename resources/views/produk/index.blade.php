@@ -18,13 +18,15 @@
     <tr>
       <td>{{ $no++ }}</td>
       <td><a href="{{ route('produk.show', $data->id ) }}">{{ $data->nama }}</a></td>
-      <td><a href="{{ route('produk.show', $data->id ) }}">{{ $data->deskripsi }}</a></td>
-      <td><a href="{{ route('produk.show', $data->id ) }}">{{ $data->harga }}</a></td>
-      <td><a href="{{ route('produk.show', $data->id ) }}">{{ $data->stok }}</a></td>
+      <td>{{ $data->deskripsi }}</td>
+      <td>{{ $data->harga }}</td>
+      <td>{{ $data->stok }}</td>
+      <td>{{ $data->nama_kategori }}</td>
       <td>
         <form action="{{ route('produk.destroy', $data->id )}}" method='post'>
          @csrf
         @method('delete')
+        <a href="{{ route('produk.show', $data->id) }}"><button type="button" class="btn btn-primary">view</button></a>
         <a href="{{ route('produk.edit', $data->id) }}"><button type="button" class="btn btn-warning">edit</button></a>
         <button class="btn btn-danger btn-sm"  type="submit" onclick="return comfirm('apakah anda yakin ?')">Delete</button>
       </form>
@@ -34,3 +36,6 @@
   </tbody>
 </table>
 @endsection
+
+
+{{-- <td><a href="{{ route('produk.show', $data->id ) }}">{{ $data->harga }}</a></td> --}}

@@ -9,6 +9,7 @@
       <th scope="col">deskripsi</th>
       <th scope="col">harga</th>
       <th scope="col">stok</th>
+      <th scope="col">kategori</th>
     </tr>
   </thead>
   <tbody>
@@ -18,23 +19,14 @@
       <td>{{ $produk->deskripsi }}</td>
       <td>{{ $produk->harga }}</td>
       <td> {{ $produk->stok }}</td>
+      <td> {{ $produk->nama_kategori }}</td>
     </tr>
   </tbody>
 </table>
 @endsection
 
 
-{{-- <p> nama : {{ $produk->nama }}</p>
-<p> deskripsi : {{ $produk->deskripsi }}</p>
-<p> harga : {{ $produk->harga }}</p>
-<p> stok : {{ $produk->stok }}</p> --}}
 
-
-{{-- <button  href="{{ route('produk.index') }}" type="submit">kembali</button> --}}
-
-
-{{-- <button><a ></a>kembali</button> --}}
-    
 
 
 

@@ -29,10 +29,10 @@
               <li class="nav-item">
                 <a class="nav-link {{ ($title === "produk") ? 'active' : '' }}" aria-current="page" href="/produk">PRODUK</a>
               </li>
-              {{-- <li class="nav-item">
-                <a class="nav-link {{ ($title === "dosen") ? 'active' : '' }}" href="/dosen">Dosen</a>
-              </li>
               <li class="nav-item">
+                <a class="nav-link {{ ($title === "kategori") ? 'active' : '' }}" href="/kategori">KATEGORI</a>
+              </li>
+              {{-- <li class="nav-item">
                 <a class="nav-link {{ ($title === "galery") ? 'active' : '' }}" href="/galery">Gallery</a>
               </li> --}}
           </div>

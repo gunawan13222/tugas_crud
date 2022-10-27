@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\produk;
+use App\Models\kategori;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -59,6 +60,7 @@ class ProdukController extends Controller
         $produk->deskripsi=$request->deskripsi;
         $produk->harga=$request->harga;
         $produk->stok=$request->stok;
+        // $produk->kategori->nama=$request->kategori;
         $produk->save();
         return redirect()->route('produk.index',[
             'title'=>'produk'])->with('success', 'Data berhasil di buat!');
@@ -112,6 +114,8 @@ class ProdukController extends Controller
         $produk->deskripsi=$request->deskripsi;
         $produk->harga=$request->harga;
         $produk->stok=$request->stok;
+        // $produk->kategori->nama=$request->nama_kategori;
+
         $produk->save();
         return redirect()->route('produk.index',[
             'title'=>'produk'])->with('success', 'Data berhasil edit !');

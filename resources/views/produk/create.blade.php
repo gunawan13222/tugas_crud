@@ -26,6 +26,11 @@
     <label for="stok">Stok</label>
     <input type="text" class="form-control" id="stok" name="stok" >
   </div>
+{{-- <form>
+  <div class="form-group">
+    <label for="nama_kategori">kategori</label>
+    <input type="text" class="nama_kategori" id="nama_kategori" name="nama_kategori" >
+  </div> --}}
   @error('nama','deskripsi','harga','stok')
 <strong>{{ $message }}</strong>
 @enderror

@@ -9,6 +9,7 @@
   @method('put')
 <form >
   <div class="form-group">
+    <h2>edit produk</h2>
     <label for="nama">Nama</label>
     <input type="text" class="form-control" id="nama" name="nama" value="{{ $produk->nama }}" >
   </div>
@@ -27,6 +28,10 @@
     <label for="stok">Stok</label>
     <input type="text" class="form-control" id="stok" name="stok"  value="{{ $produk->stok }}">
   </div>
+  <div class="form-group">
+    <label for="nama_kategori">kategori</label>
+    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"  value="{{ $produk->nama_kategori }}">
+  </div>
   <button  class="btn btn-primary" type="submit" >update</button>
   </div>
 </div>
@@ -39,7 +44,7 @@ nama : <input type="text" name="nama" value="{{ $produk->nama }}">
 deskripsi : <input type="text" name="deskripsi" value="{{ $produk->deskripsi }}">
 harga  : <input type="text" name="harga" value="{{ $produk->harga }}">
 stok: <input type="text" name="stok" value="{{ $produk->stok }}"> --}}
-@error('nama','deskripsi','harga','stok')
+@error('nama','deskripsi','harga','stok','nama_kategori')
 <strong>{{ $message }}</strong>
 @enderror
 </form>

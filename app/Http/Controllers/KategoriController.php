@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\kategori;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class KategoriController extends Controller
 {
@@ -41,23 +42,17 @@ class KategoriController extends Controller
     {
          $validated =$request->validate([
             'nama'=>'required',
-            'deskripsi'=>'required',
-            'harga'=>'required',
-            'stok'=>'required',
+            'keterangan'=>'required',
         ],[
             'nama.required'=>'nama harus di isi',
-            'deskripsi.required'=>'deskripsi harus di isi',
-            'harga.required'=>'harga harus di isi',
-            'stok.required'=>'stok harus di isi',
+            'keterangan.required'=>'keterangan harus di isi'
         ]);
-        $produk = new produk();
-        $produk->nama=$request->nama;
-        $produk->deskripsi=$request->deskripsi;
-        $produk->harga=$request->harga;
-        $produk->stok=$request->stok;
-        $produk->save();
-        return redirect()->route('produk.index',[
-            'title'=>'produk'])->with('success', 'Data berhasil di buat!');
+        $kategori = new kategori();
+        $kategori->nama=$request->nama;
+        $kategori->keterangan=$request->keterangan;
+        $kategori->save();
+        return redirect()->route('kategori.index',[
+            'title'=>'kategori'])->with('success', 'Data berhasil di buat!');
     }
 
     /**
@@ -66,11 +61,11 @@ class KategoriController extends Controller
      * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function show(kategori $id)
+    public function show($id)
     {
-         $produk = produk::findOrFail($id);
-        return view('produk.show',[
-            'title'=>'produk'], compact('produk'));
+         $kategori = kategori::findOrFail($id);
+        return view('kategori.show',[
+            'title'=>'kategori'], compact('kategori'));
     }
 
     /**
@@ -79,11 +74,11 @@ class KategoriController extends Controller
      * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori $id)
+    public function edit($id)
     {
-         $produk = produk::findOrFail($id);
-        return view('produk.edit',[
-            'title'=>'produk'], compact('produk'));
+         $kategori = kategori::findOrFail($id);
+        return view('kategori.edit',[
+            'title'=>'kategori'], compact('kategori'));
     }
 
     /**
@@ -93,22 +88,23 @@ class KategoriController extends Controller
      * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kategori $id)
+    public function update(Request $request, $id)
     {
          $validated =$request->validate([
             'nama'=>'required',
-            'deskripsi'=>'required',
-            'harga'=>'required',
-            'stok'=>'required',
+            // 'katerangan'=>'required',
+        ],
+          [
+            'nama.required'=>'nama harus di isi',
+            // 'keterangan.required'=>'keterangan harus di isi'
         ]);
-        $produk = produk::findOrFail($id);
-        $produk->nama=$request->nama;
-        $produk->deskripsi=$request->deskripsi;
-        $produk->harga=$request->harga;
-        $produk->stok=$request->stok;
-        $produk->save();
-        return redirect()->route('produk.index',[
-            'title'=>'produk'])->with('success', 'Data berhasil edit !');
+
+        $kategori = kategori::findOrFail($id);
+        $kategori->nama=$request->nama;
+        $kategori->keterangan=$request->keterangan;
+        $kategori->save();
+        return redirect()->route('kategori.index',[
+            'title'=>'kategori'])->with('success', 'Data berhasil edit !');
     }
 
     /**
@@ -117,11 +113,11 @@ class KategoriController extends Controller
      * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kategori $id)
+    public function destroy($id)
     {
-        $produk = produk::findOrFail($id);
-        $produk->delete();
-        return redirect()->route('produk.index',[
-            'title'=>'produk'])->with('danger', 'Data berhasil di hapus !');
+        $kategori = kategori::findOrFail($id);
+        $kategori->delete();
+        return redirect()->route('kategori.index',[
+            'title'=>'kategori'])->with('danger', 'Data berhasil di hapus !');
     }
 }
