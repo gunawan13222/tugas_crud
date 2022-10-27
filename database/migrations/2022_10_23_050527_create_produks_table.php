@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('harga');
             $table->string('stok');
-            // $table->foreignId('kategori_id');
+            $table->foreignId('kategori_id');
             $table->timestamps();
         });
     }

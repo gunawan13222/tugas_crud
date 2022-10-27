@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class produk extends Model
 {
-    public $fillable =['nama','deskripsi','harga','stok','nama_kategori'];
+    public $fillable =['nama','deskripsi','harga','stok','kategori_id'];
     public $timestamps = true;
 
 
      public function kategori()
     {
-        return $this->hasOne(kategori::class);
+        return $this->belongsTo(kategori::class);
     }
     use HasFactory;
 }

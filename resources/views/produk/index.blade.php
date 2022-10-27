@@ -1,7 +1,8 @@
 @extends('layout.master')
 @section('konten')
 @include('layout.pesan')
-<table border="1" class="table table-striped">
+<div class="container"><div class="card">
+  <table  class="table table-bordered">
   <thead>
     <tr>
       <th style="width: 5%" >no</th>
@@ -9,6 +10,7 @@
       <th>deskripsi</th>
       <th>harga</th>
       <th>stok</th>
+      <th>kategori</th>
       <th><a href="{{ route('produk.create') }}"><button type="button" class="btn btn-success" >tambah data</button></a></th>
     </tr>
   </thead>
@@ -17,11 +19,11 @@
     @foreach ($produk as $data)
     <tr>
       <td>{{ $no++ }}</td>
-      <td><a href="{{ route('produk.show', $data->id ) }}">{{ $data->nama }}</a></td>
+      <td>{{ $data->nama }}</a></td>
       <td>{{ $data->deskripsi }}</td>
       <td>{{ $data->harga }}</td>
       <td>{{ $data->stok }}</td>
-      <td>{{ $data->nama_kategori }}</td>
+      <td>{{ $data->kategori->nama}}</td>
       <td>
         <form action="{{ route('produk.destroy', $data->id )}}" method='post'>
          @csrf
@@ -35,6 +37,9 @@
     @endforeach
   </tbody>
 </table>
+</div></div>
+
+
 @endsection
 
 

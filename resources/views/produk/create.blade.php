@@ -7,6 +7,7 @@
   <form action="{{ route('produk.store') }}" method='post'>
   @csrf
 <form >
+  <div></div>
   <div class="form-group">
     <label for="nama">Nama</label>
     <input type="text" class="form-control" id="nama" name="nama" >
@@ -26,12 +27,13 @@
     <label for="stok">Stok</label>
     <input type="text" class="form-control" id="stok" name="stok" >
   </div>
-{{-- <form>
-  <div class="form-group">
-    <label for="nama_kategori">kategori</label>
-    <input type="text" class="nama_kategori" id="nama_kategori" name="nama_kategori" >
-  </div> --}}
-  @error('nama','deskripsi','harga','stok')
+  <label for="kategori">kategori</label>
+  <select class="form-select" aria-label="Default select example" name="kategori_id" id="kategori_id">
+  @foreach ($kate as $item)
+  <option value="{{ $item->id }}">{{ $item->nama}}</option>
+  @endforeach
+</select>
+  @error('nama','deskripsi','harga','stok','kategori')
 <strong>{{ $message }}</strong>
 @enderror
 <br>
@@ -42,14 +44,14 @@
 
 
 
+
+@endsection 
+
+
+
 {{-- nama  <input type="text" name="nama"><br>
 deskripsi  <input type="text" name="deskripsi"><br>
 harga <input type="text" name="harga"><br>
 stok  <input type="text" name="stok"><br> --}}
-
-   
-@endsection 
-
-
 
 

@@ -19,7 +19,7 @@
       <td>{{ $produk->deskripsi }}</td>
       <td>{{ $produk->harga }}</td>
       <td> {{ $produk->stok }}</td>
-      <td> {{ $produk->nama_kategori }}</td>
+      <td> {{ $produk->kategori->nama }}</td>
     </tr>
   </tbody>
 </table>

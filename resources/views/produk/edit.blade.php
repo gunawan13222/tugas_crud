@@ -28,10 +28,13 @@
     <label for="stok">Stok</label>
     <input type="text" class="form-control" id="stok" name="stok"  value="{{ $produk->stok }}">
   </div>
-  <div class="form-group">
-    <label for="nama_kategori">kategori</label>
-    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"  value="{{ $produk->nama_kategori }}">
-  </div>
+ <br>
+  <label for="kategori">kategori</label>
+  <select class="form-select" aria-label="Default select example" name="kategori_id" id="kategori_id">
+  @foreach ($kate as $item)
+  <option value="{{ $item->id }}">{{ $item->nama}}</option>
+  @endforeach
+</select>
   <button  class="btn btn-primary" type="submit" >update</button>
   </div>
 </div>
@@ -44,8 +47,7 @@ nama : <input type="text" name="nama" value="{{ $produk->nama }}">
 deskripsi : <input type="text" name="deskripsi" value="{{ $produk->deskripsi }}">
 harga  : <input type="text" name="harga" value="{{ $produk->harga }}">
 stok: <input type="text" name="stok" value="{{ $produk->stok }}"> --}}
-@error('nama','deskripsi','harga','stok','nama_kategori')
+@error('nama','deskripsi','harga','stok','kategori')
 <strong>{{ $message }}</strong>
 @enderror
-</form>
 @endsection

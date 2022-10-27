@@ -17,7 +17,7 @@ class ProdukController extends Controller
     public function index()
     {
         // menambahkan halaman utama 
-        $produk = produk::all();
+        $produk = produk::with('kategori')->latest()->paginate();
         return view('produk.index', compact('produk'),[
             'title'=>'produk'
         ]);
@@ -31,7 +31,8 @@ class ProdukController extends Controller
     public function create()
     {
         // menampilkan from produk
-        return view ('produk.create',[
+        $kate = kategori::all();
+        return view ('produk.create',compact('kate'),[
             'title'=>'produk']);
     }
 
@@ -49,18 +50,30 @@ class ProdukController extends Controller
             'deskripsi'=>'required',
             'harga'=>'required',
             'stok'=>'required',
+            'kategori_id'=>'required',
         ],[
             'nama.required'=>'nama harus di isi',
             'deskripsi.required'=>'deskripsi harus di isi',
             'harga.required'=>'harga harus di isi',
             'stok.required'=>'stok harus di isi',
+            'kategori_id.required'=>'stok harus di isi',
         ]);
+
+
+        //      $produk::create([ 
+        //     'nama'=>$request->nama,
+        //     'deskripsi'=>$request->deskripsi,
+        //     'harga'=>$request->harga,
+        //     'stok'=>$request->stok,
+        //     'kategori_id'=>$request->kategori,
+        // ]);
+
         $produk = new produk();
         $produk->nama=$request->nama;
         $produk->deskripsi=$request->deskripsi;
         $produk->harga=$request->harga;
         $produk->stok=$request->stok;
-        // $produk->kategori->nama=$request->kategori;
+        $produk->kategori_id=$request->kategori_id;
         $produk->save();
         return redirect()->route('produk.index',[
             'title'=>'produk'])->with('success', 'Data berhasil di buat!');
@@ -89,9 +102,10 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $produk = produk::findOrFail($id);
+        $produk = produk::with('kategori')->findOrFail($id);
+        $kate = kategori::all();
         return view('produk.edit',[
-            'title'=>'produk'], compact('produk'));
+            'title'=>'produk'], compact('produk','kate'));
     }
 
     /**
@@ -114,8 +128,7 @@ class ProdukController extends Controller
         $produk->deskripsi=$request->deskripsi;
         $produk->harga=$request->harga;
         $produk->stok=$request->stok;
-        // $produk->kategori->nama=$request->nama_kategori;
-
+        $produk->kategori_id=$request->kategori_id;
         $produk->save();
         return redirect()->route('produk.index',[
             'title'=>'produk'])->with('success', 'Data berhasil edit !');
