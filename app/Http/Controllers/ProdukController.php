@@ -60,14 +60,6 @@ class ProdukController extends Controller
         ]);
 
 
-        //      $produk::create([ 
-        //     'nama'=>$request->nama,
-        //     'deskripsi'=>$request->deskripsi,
-        //     'harga'=>$request->harga,
-        //     'stok'=>$request->stok,
-        //     'kategori_id'=>$request->kategori,
-        // ]);
-
         $produk = new produk();
         $produk->nama=$request->nama;
         $produk->deskripsi=$request->deskripsi;

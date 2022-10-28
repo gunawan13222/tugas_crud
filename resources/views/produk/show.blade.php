@@ -1,28 +1,22 @@
 @extends('layout.master')
 @section('konten')
-<a href="{{ route('produk.index') }}" type="submit"><button  type="button" class="btn btn-warning">kembali</button></a>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">no</th>
-      <th scope="col">nama</th>
-      <th scope="col">deskripsi</th>
-      <th scope="col">harga</th>
-      <th scope="col">stok</th>
-      <th scope="col">kategori</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td> {{ $produk->nama }}</td>
-      <td>{{ $produk->deskripsi }}</td>
-      <td>{{ $produk->harga }}</td>
-      <td> {{ $produk->stok }}</td>
-      <td> {{ $produk->kategori->nama }}</td>
-    </tr>
-  </tbody>
-</table>
+<br>
+<div class="d-flex justify-content-center">
+  <div class="container">
+    <div class="card">
+      <ul class="list-group">
+        <li class="list-group-item active"> {{ $produk->nama }}</li>
+        <li class="list-group-item"> spesisikasi : {{ $produk->deskripsi }}</li>
+        <li class="list-group-item"> harga :{{ $produk->harga }}</li>
+        <li class="list-group-item"> stok : {{ $produk->stok }}</li>
+        <li class="list-group-item">{{ $produk->kategori->nama }}</li>
+        <li class="list-group-item">{{ $produk->kategori->keterangan }}</li>
+      </ul>
+    </div>
+    <br>
+    <a href="{{ route('produk.index') }}" type="submit"><button  type="button" class="btn btn-warning">kembali</button></a>
+</div>
+</div>
 @endsection
 
 

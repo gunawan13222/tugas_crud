@@ -92,11 +92,11 @@ class KategoriController extends Controller
     {
          $validated =$request->validate([
             'nama'=>'required',
-            // 'katerangan'=>'required',
+            'keterangan'=>'required',
         ],
           [
             'nama.required'=>'nama harus di isi',
-            // 'keterangan.required'=>'keterangan harus di isi'
+            'keterangan.required'=>'ketrangan harus di isi',
         ]);
 
         $kategori = kategori::findOrFail($id);

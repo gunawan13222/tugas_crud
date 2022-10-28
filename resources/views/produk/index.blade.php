@@ -1,12 +1,13 @@
 @extends('layout.master')
 @section('konten')
 @include('layout.pesan')
+<br>
 <div class="container"><div class="card">
   <table  class="table table-bordered">
   <thead>
     <tr>
       <th style="width: 5%" >no</th>
-      <th>Nama</th>
+      <th>Nama produk</th>
       <th>deskripsi</th>
       <th>harga</th>
       <th>stok</th>
@@ -28,7 +29,7 @@
         <form action="{{ route('produk.destroy', $data->id )}}" method='post'>
          @csrf
         @method('delete')
-        <a href="{{ route('produk.show', $data->id) }}"><button type="button" class="btn btn-primary">view</button></a>
+        <a href="{{ route('produk.show', $data->id) }}"><button type="button" class="btn btn-primary">detail</button></a>
         <a href="{{ route('produk.edit', $data->id) }}"><button type="button" class="btn btn-warning">edit</button></a>
         <button class="btn btn-danger btn-sm"  type="submit" onclick="return comfirm('apakah anda yakin ?')">Delete</button>
       </form>
@@ -37,10 +38,6 @@
     @endforeach
   </tbody>
 </table>
-</div></div>
-
-
+</div>
+</div>
 @endsection
-
-
-{{-- <td><a href="{{ route('produk.show', $data->id ) }}">{{ $data->harga }}</a></td> --}}

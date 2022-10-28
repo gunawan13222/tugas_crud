@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('konten')
 @include('layout.pesan')
-<a href="{{ route('produk.index') }}" type="submit"><button class="btn btn-warning">kembali</button></a>
+<br>
 <div class="d-flex justify-content-center">
   <div class="col-md-4 col-md-offset-6">
   <form action="{{ route('produk.store') }}" method='post'>
@@ -9,20 +9,17 @@
 <form >
   <div></div>
   <div class="form-group">
-    <label for="nama">Nama</label>
+    <label for="nama">Nama Produk</label>
     <input type="text" class="form-control" id="nama" name="nama" >
   </div>
-<form>
   <div class="form-group">
     <label for="deskripsi">Deskripsi</label>
-    <input type="text" class="form-control" id="deskripsi" name="deskripsi">
+    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
   </div>
-<form>
   <div class="form-group">
     <label for="harga">Harga</label>
     <input type="text" class="form-control" id="harga"  name="harga" >
   </div>
-<form>
   <div class="form-group">
     <label for="stok">Stok</label>
     <input type="text" class="form-control" id="stok" name="stok" >
@@ -37,6 +34,7 @@
 <strong>{{ $message }}</strong>
 @enderror
 <br>
+<a href="{{ route('produk.index') }}" type="submit"><button class="btn btn-warning">kembali</button></a>
 <button class="btn btn-primary" type="submit">Save</button>
 </form>
 </div>
